@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat Box</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffc713;
+        flex-direction: column;
+        font-family: monospace;
+    }
+
+    h1 {
+        font-size: 4rem;
+        letter-spacing: 0.3px;
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #form-wrapper {
+        margin: 16px 0;
+        padding: 24px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 6px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+
+    .chat {
+        padding: 12px 0;
+        text-align: left;
+        font-size: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .chat:first-child {
+        padding-top: 0;
+    }
+
+    .chat:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    #chat-wrapper {
+        margin: 16px 0;
+        width: 300px;
+        padding: 24px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 6px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin: 12px 0;
+        font-weight: bolder
+    }
+
+    input[type='text'] {
+        padding: 6px;
+        border-radius: 4px;
+        background-color: #212121;
+        color: #ffffff;
+        outline: none;
+        border: none;
+    }
+
+    select {
+        background-color: #212121;
+        color: #ffffff;
+        outline: none;
+        padding: 6px;
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+        background-color: #212121;
+        color: #ffffff;
+        padding: 10px 16px;
+        border-radius: 4px;
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.15s ease;
+        border: none;
+    }
+
+    input[type="submit"]:hover {
+        box-shadow: none;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <h1>CHAT BOX</h1>
+    <div id="form-wrapper">
+        <form action="#" method="post" th:action="@{/chat}" th:object="${newChat}">
+            <label for="username">Username: </label>
+            <input id="username" type="text" th:field="*{username}">
+            <label for="message">Message: </label>
+            <input id="message" type="text" th:field="*{message}">
+            <label for="messageType">Message Type: </label>
+            <select id="messageType" th:field="*{messageType}">
+                <option th:each="type : ${messageTypes}" th:value="${type}" th:text="${type}">Say</option>
+            </select>
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+    <div id="chat-wrapper">
+        <div class="chat" th:each="chatMessage : ${chatMessages}">
+            <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.message}">Message</span>
+        </div>
+    </div>
+</body>
+</html>
