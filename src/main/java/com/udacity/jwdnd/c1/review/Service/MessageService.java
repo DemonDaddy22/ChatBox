@@ -1,5 +1,6 @@
 package com.udacity.jwdnd.c1.review.Service;
 
+import com.udacity.jwdnd.c1.review.Mapper.MessageMapper;
 import com.udacity.jwdnd.c1.review.Model.ChatForm;
 import com.udacity.jwdnd.c1.review.Model.ChatMessage;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,10 @@ import java.util.List;
 
 @Service
 public class MessageService {
-    private List<ChatMessage> messages;
+    private MessageMapper messageMapper;
 
-    @PostConstruct
-    public void postConstruct() {
-        this.messages = new ArrayList<>();
+    public MessageService(MessageMapper messageMapper) {
+        this.messageMapper = messageMapper;
     }
 
     public void addMessage(ChatForm chatform) {
@@ -33,11 +33,11 @@ public class MessageService {
                 break;
         }
         chatMessage.setMessage(newMessage);
-        this.messages.add(chatMessage);
+        messageMapper.insert(chatMessage);
     }
 
     public List<ChatMessage> getMessages() {
-        return this.messages;
+        return this.messageMapper.getMessages();
     }
 
     private String upperCase(String message) {
@@ -47,6 +47,4 @@ public class MessageService {
     private String lowerCase(String message) {
         return message.toLowerCase();
     }
-
-
 }
