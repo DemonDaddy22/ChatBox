@@ -4,6 +4,15 @@ public class User {
     private int userId;
     private String username, firstname, lastname, password, salt;
 
+    public User(Integer userId, String username, String firstname, String lastname, String password, String salt) {
+        this.userId = userId;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.salt = salt;
+    }
+
     public int getUserId() {
         return userId;
     }
