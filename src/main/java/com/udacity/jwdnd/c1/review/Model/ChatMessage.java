@@ -1,10 +1,16 @@
 package com.udacity.jwdnd.c1.review.Model;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-
 public class ChatMessage {
+    private int messageId;
     private String message, username;
+
+    public int getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(int messageId) {
+        this.messageId = messageId;
+    }
 
     public String getMessage() {
         return message;
