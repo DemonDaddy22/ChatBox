@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS USERS {
 CREATE TABLE IF NOT EXISTS MESSAGES {
     messageId Integer PRIMARY KEY auto_increment,
     username VARCHAR NOT NULL,
-    messageText VARCHAR NOT NULL
+    message VARCHAR NOT NULL
 };
