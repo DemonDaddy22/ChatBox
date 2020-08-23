@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public boolean isUserPresent(String username) {
-        return userMapper.getUser(username) == null;
+        return userMapper.getUser(username) != null;
     }
 
     public User getUser(String username) {
