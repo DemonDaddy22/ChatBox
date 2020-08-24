@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat Box</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
 </head>
 <style>
     body {
@@ -26,6 +27,7 @@
     }
 
     #form-wrapper {
+        display: table;
         margin: 16px 24px 16px 0;
         padding: 24px;
         border: 1px solid rgba(0, 0, 0, 0.5);
@@ -75,34 +77,17 @@
     input[type='text'] {
         padding: 6px;
         border-radius: 4px;
-        background-color: #212121;
+        background-color: rgba(0, 0, 0, 0.75);
         color: #ffffff;
         outline: none;
         border: none;
     }
 
     select {
-        background-color: #212121;
+        background-color: rgba(0, 0, 0, 0.75);
         color: #ffffff;
         outline: none;
         padding: 6px;
-    }
-
-    input[type="submit"] {
-        margin-top: 20px;
-        background-color: #212121;
-        color: #ffffff;
-        padding: 10px 16px;
-        border-radius: 4px;
-        outline: none;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: all 0.15s ease;
-        border: none;
-    }
-
-    input[type="submit"]:hover {
-        box-shadow: none;
-        cursor: pointer;
     }
 
     .container {
@@ -122,7 +107,7 @@
                 <select id="messageType" th:field="*{messageType}">
                     <option th:each="type : ${messageTypes}" th:value="${type}" th:text="${type}">Say</option>
                 </select>
-                <input type="submit" value="Send Message">
+                <input class="btn btn-success mt-4" type="submit" value="Send Message">
             </form>
         </div>
         <div id="chat-wrapper">
