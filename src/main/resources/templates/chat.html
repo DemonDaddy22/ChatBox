@@ -116,8 +116,6 @@
     <div class="container">
         <div id="form-wrapper">
             <form action="#" method="post" th:action="@{/chat}" th:object="${newChat}">
-                <label for="username">Username: </label>
-                <input id="username" type="text" th:field="*{username}">
                 <label for="message">Message: </label>
                 <input id="message" type="text" th:field="*{message}">
                 <label for="messageType">Message Type: </label>

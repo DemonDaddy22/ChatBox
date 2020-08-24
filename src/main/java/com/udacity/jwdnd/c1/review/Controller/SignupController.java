@@ -24,7 +24,7 @@ public class SignupController {
     }
 
     @PostMapping
-    public String signupUser(@ModelAttribute("newUser") User user, Model model) {
+    public String signupUser(@ModelAttribute User user, Model model) {
         String signupError = null;
 
         if (this.userService.isUserPresent(user.getUsername())) {
@@ -41,6 +41,6 @@ public class SignupController {
             }
         }
 
-        return "string";
+        return "signup";
     }
 }

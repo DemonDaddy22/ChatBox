@@ -1,7 +1,7 @@
 package com.udacity.jwdnd.c1.review.Model;
 
 public class User {
-    private int userId;
+    private Integer userId;
     private String username, firstname, lastname, password, salt;
 
     public User(Integer userId, String username, String firstname, String lastname, String password, String salt) {
