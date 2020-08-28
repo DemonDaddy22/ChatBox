@@ -10,8 +10,8 @@ import java.util.List;
 
 @Mapper
 public interface MessageMapper {
-    @Select("SELECT * FROM MESSAGES")
-    List<ChatMessage> getMessages();
+    @Select("SELECT * FROM MESSAGES where username = #{username}")
+    List<ChatMessage> getMessages(String username);
 
     @Insert("INSERT INTO MESSAGES (username, message) VALUES (#{username}, #{message})")
     @Options(useGeneratedKeys = true, keyProperty = "messageId")

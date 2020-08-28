@@ -36,8 +36,8 @@ public class MessageService {
         messageMapper.insert(chatMessage);
     }
 
-    public List<ChatMessage> getMessages() {
-        return this.messageMapper.getMessages();
+    public List<ChatMessage> getMessages(String username) {
+        return this.messageMapper.getMessages(username);
     }
 
     private String upperCase(String message) {

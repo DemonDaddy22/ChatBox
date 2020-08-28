@@ -20,8 +20,10 @@ public class ChatController {
     }
 
     @GetMapping
-    public String getChats(@ModelAttribute("newChat") ChatForm chatForm, Model model) {
-        model.addAttribute("chatMessages", this.messageService.getMessages());
+    public String getChats(Authentication authentication, @ModelAttribute("newChat") ChatForm chatForm, Model model) {
+        chatForm.setUsername(authentication.getName());
+        chatForm.setMessage("");
+        model.addAttribute("chatMessages", this.messageService.getMessages(chatForm.getUsername()));
         return "chat";
     }
 
@@ -30,7 +32,7 @@ public class ChatController {
         chatForm.setUsername(authentication.getName());
         this.messageService.addMessage(chatForm);
         chatForm.setMessage("");
-        model.addAttribute("chatMessages", this.messageService.getMessages());
+        model.addAttribute("chatMessages", this.messageService.getMessages(chatForm.getUsername()));
         return "chat";
     }
 
