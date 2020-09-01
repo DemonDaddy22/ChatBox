@@ -138,12 +138,12 @@
         </div>
         <div id="chat-wrapper">
             <div class="chat" th:each="chatMessage : ${chatMessages}">
-                <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.message}">Message</span>
+                <span id="chatUsername" th:text="${chatMessage.username}">Username</span>: <span id="chatMessage" th:text="${chatMessage.message}">Message</span>
             </div>
         </div>
     </div>
     <form th:action="@{/logout}" method="POST">
-        <input type="submit" value="Logout" class="logout-btn"/>
+        <input id="submitBtn" type="submit" value="Logout" class="logout-btn"/>
     </form>
     <script type="text/javascript" th:src="@{/js/index.js}"></script>
 </body>
