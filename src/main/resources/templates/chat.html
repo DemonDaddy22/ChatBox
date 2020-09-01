@@ -138,7 +138,7 @@
         </div>
         <div id="chat-wrapper">
             <div class="chat" th:each="chatMessage : ${chatMessages}">
-                <span id="chatUsername" th:text="${chatMessage.username}">Username</span>: <span id="chatMessage" th:text="${chatMessage.message}">Message</span>
+                <span class="chatUsername" th:text="${chatMessage.username}">Username</span>: <span class="chatMessage" th:text="${chatMessage.message}">Message</span>
             </div>
         </div>
     </div>

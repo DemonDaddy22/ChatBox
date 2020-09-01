@@ -1,23 +1,22 @@
 package com.udacity.jwdnd.c1.review.Page;
 
 import com.udacity.jwdnd.c1.review.Model.ChatMessage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ChatPage {
     @FindBy(id = "message")
     private WebElement messageField;
 
-    @FindBy(id = "submitBtn")
+    @FindBy(className = "btn-success")
     private WebElement messageSubmit;
 
-    @FindBy(id = "chatUsername")
+    @FindBy(className = "chatUsername")
     private WebElement chatUsername;
-
-    @FindBy(id = "chatMessage")
-    private WebElement chatMessage;
 
     public ChatPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -28,9 +27,13 @@ public class ChatPage {
         this.messageSubmit.click();
     }
 
-    public ChatMessage getFirstMessage() {
+    public ChatMessage getFirstMessage(WebDriver driver) {
         ChatMessage chatMessage = new ChatMessage();
-        chatMessage.setMessage(this.chatMessage.getText());
+
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebElement displayedMessage = wait.until(driver1 -> driver1.findElement(By.className("chatMessage")));
+
+        chatMessage.setMessage(displayedMessage.getText());
         chatMessage.setUsername(this.chatUsername.getText());
         return chatMessage;
     }
